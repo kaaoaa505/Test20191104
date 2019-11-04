@@ -1,1 +1,9 @@
-language: node_js
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kaaoaa505/test20191104 -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true kaaoaa505/test20191104 npm run test -- --coverage
